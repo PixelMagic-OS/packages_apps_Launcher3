@@ -122,6 +122,10 @@ public class TaskbarManager {
                 SystemUiProxy.INSTANCE.get(mContext), new Handler());
         mUserSetupCompleteListener = isUserSetupComplete -> recreateTaskbar();
         mNavBarKidsModeListener = isNavBarKidsMode -> recreateTaskbar();
+        mEnableTaskBarListener = isTaskBarEnabled -> {
+            // Restart launcher
+            System.exit(0);
+        };
         // TODO(b/227669780): Consolidate this w/ DisplayController callbacks
         mComponentCallbacks = new ComponentCallbacks() {
             private Configuration mOldConfig = mContext.getResources().getConfiguration();

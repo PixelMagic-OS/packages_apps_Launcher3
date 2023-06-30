@@ -406,7 +406,6 @@ public class Launcher extends StatefulActivity<LauncherState>
 
     private StringCache mStringCache;
     private BaseSearchConfig mBaseSearchConfig;
-    private boolean mPendingRestart;
 
     // QuickSpace
     private QuickSpaceView mQuickSpace;
@@ -636,9 +635,6 @@ public class Launcher extends StatefulActivity<LauncherState>
 
     @Override
     public void onIdpChanged(boolean modelPropertiesChanged, boolean taskbarChanged) {
-        if (taskbarChanged) {
-            mPendingRestart = true;
-        }
         onHandleConfigurationChanged();
     }
 
@@ -1015,10 +1011,6 @@ public class Launcher extends StatefulActivity<LauncherState>
 
         mAppWidgetHolder.setActivityStarted(true);
         TraceHelper.INSTANCE.endSection(traceToken);
-
-        if (mPendingRestart) {
-            System.exit(0);
-        }
     }
 
     @Override
