@@ -347,7 +347,7 @@ public class InvariantDeviceProfile implements OnSharedPreferenceChangeListener 
             case DeviceProfile.KEY_PHONE_TASKBAR:
                 // Create the illusion of this taking effect immediately
                 // Also needed because TaskbarManager inits before SystemUiProxy on start
-                boolean enabled = Utilities.getPrefs(mContext).getBoolean(DeviceProfile.KEY_PHONE_TASKBAR, false);
+                boolean enabled = prefs.getBoolean(DeviceProfile.KEY_PHONE_TASKBAR, false);
                 SystemUiProxy.INSTANCE.get(mContext).setTaskbarEnabled(enabled);
 
                 onConfigChanged(mContext);
