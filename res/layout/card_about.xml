@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/entity_header"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/preference_about"
@@ -12,14 +11,12 @@
     android:elevation="0dp">
 
     <LinearLayout
-        android:id="@+id/entity_header_content"
         android:orientation="horizontal"
         android:layout_margin="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <ImageView
-            android:contentDescription="@null"
             android:layout_gravity="center"
             android:id="@android:id/icon"
             android:layout_width="56dp"
@@ -41,7 +38,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:singleLine="true"
-                android:textSize="16sp"
+                android:textSize="18sp"
                 android:textColor="@color/op_control_text_color_primary" />
 
             <TextView
