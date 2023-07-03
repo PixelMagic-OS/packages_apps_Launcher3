@@ -38,6 +38,16 @@
         <favorite launcher:uri="mms:" />
         <favorite launcher:uri="mmsto:" />
     </resolve>
+    
+    <resolve
+        launcher:container="-101"
+        launcher:screen="2"
+        launcher:x="2"
+        launcher:y="0" >
+        <favorite
+            launcher:packageName="com.android.settings"
+            launcher:className="com.android.settings.SETTINGS" />
+    </resolve>
 
     <resolve
         launcher:container="-101"
