@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/preference_about"
@@ -14,14 +15,24 @@
         android:orientation="horizontal"
         android:layout_margin="10dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:baselineAligned="false"
+        tools:ignore="UselessParent">
 
-        <ImageView
-            android:layout_gravity="center"
-            android:id="@android:id/icon"
-            android:layout_width="56dp"
-            android:layout_height="56dp"
-            android:tint="?android:attr/colorControlNormal"/>
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp">
+
+            <ImageView
+                android:layout_gravity="center"
+                android:id="@android:id/icon"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:tint="?android:attr/colorControlNormal" />
+
+        </FrameLayout>
 
         <LinearLayout
             android:layout_width="0dp"
@@ -45,9 +56,6 @@
                 android:id="@android:id/summary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@android:id/title"
-                android:layout_alignStart="@android:id/title"
-                android:layout_alignLeft="@android:id/title"
                 android:layout_marginTop="2.0dip"
                 android:maxLines="4"
                 android:textSize="12sp"
