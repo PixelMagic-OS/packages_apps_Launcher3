@@ -124,7 +124,7 @@ public class QuickEventsController {
         mEventTitleSub = mContext.getResources().getStringArray(R.array.welcome_message_variants)[getLuckyNumber(0,6)];
         mGreetings = mContext.getResources().getString(R.string.quickspace_grt_general);
         mClockExt = mContext.getResources().getString(R.string.quickspace_ext_three);
-        mEventSubIcon = R.drawable.ic_quickspace_spark;
+        mEventSubIcon = R.drawable.ic_quickspace_cloud;
 
         mEventTitleSubAction = new OnClickListener() {
             @Override
@@ -205,7 +205,7 @@ public class QuickEventsController {
         mPSAMidniteStr = mContext.getResources().getStringArray(R.array.quickspace_psa_midnight);
         mPSAAfterNoonStr = mContext.getResources().getStringArray(R.array.quickspace_psa_noon);
         mPSARandomStr = mContext.getResources().getStringArray(R.array.quickspace_psa_random);
-        mEventSubIcon = R.drawable.ic_quickspace_spark;
+        mEventSubIcon = R.drawable.ic_quickspace_cloud;
         int psaLength;
 
         // Clean the onClick event to avoid any weird behavior
