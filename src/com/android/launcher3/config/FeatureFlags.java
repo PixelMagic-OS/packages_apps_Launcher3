@@ -63,6 +63,7 @@ public final class FeatureFlags {
      */
     @Deprecated
     public static final boolean QSB_ON_FIRST_SCREEN = BuildConfig.QSB_ON_FIRST_SCREEN;
+    public static final boolean USE_QUICKSPACE_VIEW = true;
 
     /**
      * Feature flag to handle define config changes dynamically instead of killing the process.
