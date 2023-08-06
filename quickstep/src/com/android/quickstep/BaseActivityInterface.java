@@ -243,11 +243,11 @@ public abstract class BaseActivityInterface<STATE_TYPE extends BaseState<STATE_T
             Resources res = context.getResources();
             float maxScale = res.getFloat(R.dimen.overview_max_scale);
             int taskMargin = dp.overviewTaskMarginPx;
-            calculateTaskSizeInternal(
-                    context,
-                    dp,
-                    dp.overviewTaskThumbnailTopMarginPx,
-                    dp.getOverviewActionsClaimedSpace(),
+            calculateTaskSizeInternal(context, dp,
+                    dp.overviewTaskThumbnailTopMarginPx
+                    + res.getDimensionPixelSize(R.dimen.overview_task_extra_top_margin),
+                    dp.getOverviewActionsClaimedSpace()
+                    + res.getDimensionPixelSize(R.dimen.overview_task_extra_bottom_margin),
                     res.getDimensionPixelSize(R.dimen.overview_minimum_next_prev_size) + taskMargin,
                     maxScale,
                     Gravity.CENTER,
