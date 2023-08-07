@@ -27,7 +27,7 @@
         android:layout_gravity="start|center_vertical"
         android:gravity="start|center_vertical"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp">
+        android:layout_marginTop="4dp">
 
             <com.android.launcher3.quickspace.views.DoubleShadowTextView
                 android:id="@+id/extended_greetings"
@@ -65,7 +65,7 @@
         android:layout_gravity="start|center_vertical"
         android:gravity="start|center_vertical"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp">
+        android:layout_marginTop="4dp">
         
             <com.android.launcher3.quickspace.views.DoubleShadowTextView
                 android:id="@+id/extended_greetings_clock"
@@ -114,7 +114,7 @@
             android:gravity="start|center_vertical"
             android:orientation="horizontal"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp">
+            android:layout_marginTop="4dp">
 
             <ImageView
                 android:id="@+id/quick_event_weather_icon"
@@ -148,7 +148,7 @@
         android:layout_marginEnd="16dp"
         android:orientation="horizontal"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp">
+        android:layout_marginTop="4dp">
 
         <ImageView
             android:id="@+id/quick_event_icon_sub"
