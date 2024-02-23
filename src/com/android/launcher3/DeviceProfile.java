@@ -36,6 +36,7 @@ import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
+import android.content.SharedPreferences;
 import android.graphics.Point;
 import android.graphics.PointF;
 import android.graphics.Rect;
@@ -326,6 +327,8 @@ public class DeviceProfile {
         this.rotationHint = windowBounds.rotationHint;
         mInsets.set(windowBounds.insets);
 
+        SharedPreferences prefs = LauncherPrefs.getPrefs(context);
+        
         // TODO(b/241386436): shouldn't change any launcher behaviour
         mIsResponsiveGrid = inv.workspaceSpecsId != INVALID_RESOURCE_HANDLE
                 && inv.allAppsSpecsId != INVALID_RESOURCE_HANDLE
