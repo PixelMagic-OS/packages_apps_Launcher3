@@ -30,4 +30,7 @@
 
     <!-- Overview scrolling scale animation -->
     <dimen name="overview_scroll_scale">0.9</dimen>
+    
+    <!-- Overview spacing -->
+    <dimen name="overview_actions_container_height">48dp</dimen>
 </resources>
