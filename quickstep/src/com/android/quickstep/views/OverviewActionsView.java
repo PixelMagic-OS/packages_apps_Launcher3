@@ -149,7 +149,7 @@ public class OverviewActionsView<T extends OverlayUICallbacks> extends FrameLayo
     public OverviewActionsView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr, 0);
         SharedPreferences prefs = LauncherPrefs.getPrefs(context);
-        mScreenshot = prefs.getBoolean(KEY_RECENTS_SCREENSHOT, true);
+        mScreenshot = prefs.getBoolean(KEY_RECENTS_SCREENSHOT, false);
         mClearAll = prefs.getBoolean(KEY_RECENTS_CLEAR_ALL, true);
         mLens = prefs.getBoolean(KEY_RECENTS_LENS, false);
         prefs.registerOnSharedPreferenceChangeListener(this);
@@ -255,7 +255,7 @@ public class OverviewActionsView<T extends OverlayUICallbacks> extends FrameLayo
     @Override
     public void onSharedPreferenceChanged(SharedPreferences prefs, String key) {
         if (key.equals(KEY_RECENTS_SCREENSHOT)) {
-            mScreenshot = prefs.getBoolean(KEY_RECENTS_SCREENSHOT, true);
+            mScreenshot = prefs.getBoolean(KEY_RECENTS_SCREENSHOT, false);
         } else if (key.equals(KEY_RECENTS_CLEAR_ALL)) {
             mClearAll = prefs.getBoolean(KEY_RECENTS_CLEAR_ALL, true);
         } else if (key.equals(KEY_RECENTS_LENS)) {
