@@ -127,7 +127,6 @@ import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
 import android.view.animation.Interpolator;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.OverScroller;
 import android.widget.TextView;
@@ -752,9 +751,12 @@ public abstract class RecentsView<ACTIVITY_TYPE extends StatefulActivity<STATE_T
     @Nullable
     private DesktopRecentsTransitionController mDesktopRecentsTransitionController;
 
+    Drawable mLockedDrawable;
+    Drawable mUnlockedDrawable;
+
     List<String> mLockedTasks = new ArrayList<>();
 
-    private ImageButton mLockButtonView;
+    private Button mLockButtonView;
 
     private String mStartPkg, mEndPkg;
 
@@ -861,6 +863,8 @@ public abstract class RecentsView<ACTIVITY_TYPE extends StatefulActivity<STATE_T
         if (mLockedTasks.size() == 0 && lockedTasks != null && !lockedTasks.isEmpty()) {
             mLockedTasks = new ArrayList<String>(Arrays.asList(lockedTasks.split(",")));
         }
+        mLockedDrawable = context.getDrawable(R.drawable.recents_locked);
+        mUnlockedDrawable = context.getDrawable(R.drawable.recents_unlocked);
 
         mTintingColor = getForegroundScrimDimColor(context);
 
@@ -1098,9 +1102,8 @@ public abstract class RecentsView<ACTIVITY_TYPE extends StatefulActivity<STATE_T
         mSplitSelectStateController = splitController;
         mDesktopRecentsTransitionController = desktopRecentsTransitionController;
         mMemInfoView = memInfoView;
-        mLockButtonView = (ImageButton) mActionsView.findViewById(R.id.action_lock);
+        mLockButtonView = (Button) mActionsView.findViewById(R.id.action_lock);
         mLockButtonView.setOnClickListener(this::lockCurrentTask);
-        mLockButtonView.setImageResource(R.drawable.recents_unlocked);
     }
 
     public SplitSelectStateController getSplitSelectController() {
@@ -1510,9 +1513,6 @@ public abstract class RecentsView<ACTIVITY_TYPE extends StatefulActivity<STATE_T
         super.onPageEndTransition();
         if (getCurrentPageTaskView() != null) {
             mEndPkg = getCurrentPageTaskView().getTask().key.getPackageName();
-        }
-        if (mLockedTasks.contains(mStartPkg) != mLockedTasks.contains(mEndPkg)) {
-            updateLockIcon();
         }
         if (getNextPage() > 0) {
             setSwipeDownShouldLaunchApp(true);
@@ -4229,7 +4229,7 @@ public abstract class RecentsView<ACTIVITY_TYPE extends StatefulActivity<STATE_T
         }
     }
 
-    public void lockCurrentTask(View view) {
+    private void lockCurrentTask(View view) {
         TaskView taskView = getCurrentPageTaskView();
         if (taskView != null) {
             Task t = taskView.getTask();
@@ -4249,21 +4249,10 @@ public abstract class RecentsView<ACTIVITY_TYPE extends StatefulActivity<STATE_T
                     appLocked.show();
                 }
             }
-            updateLockIcon(pkg);
         }
         Settings.System.putStringForUser(getContext().getContentResolver(),
         "recents_locked_tasks", String.join(",", mLockedTasks),
                 UserHandle.USER_CURRENT);
-    }
-
-    private void updateLockIcon() {
-        if (getNextPageTaskView() != null)
-            updateLockIcon(getNextPageTaskView().getTask().key.getPackageName());
-    }
-
-    private void updateLockIcon(String pkg) {
-        boolean isLocked = mLockedTasks.contains(pkg);
-        mLockButtonView.setImageResource(isLocked ? R.drawable.recents_locked : R.drawable.recents_unlocked);
     }
 
     @Override
@@ -4485,7 +4474,6 @@ public abstract class RecentsView<ACTIVITY_TYPE extends StatefulActivity<STATE_T
         setImportantForAccessibility(isModal() ? IMPORTANT_FOR_ACCESSIBILITY_NO
                 : IMPORTANT_FOR_ACCESSIBILITY_AUTO);
         doScrollScale();
-        updateLockIcon();
     }
 
     private void updatePivots() {
@@ -5305,7 +5293,6 @@ public abstract class RecentsView<ACTIVITY_TYPE extends StatefulActivity<STATE_T
         updateCurrentTaskActionsVisibility();
         loadVisibleTaskData(TaskView.FLAG_UPDATE_ALL);
         updateEnabledOverlays();
-        updateLockIcon();
     }
 
     @Override
