@@ -22,121 +22,127 @@
     <LinearLayout
         android:id="@+id/action_buttons"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/overview_actions_height"
-        android:layout_gravity="bottom|center_horizontal"
-        android:orientation="vertical">
-
-    <LinearLayout
-        android:id="@+id/clear_all_container"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/overview_clear_all_container_height"
+        android:layout_height="@dimen/custom_overview_actions_height"
         android:layout_gravity="bottom|center_horizontal"
         android:layout_marginBottom="@dimen/overview_clear_all_container_margin_bottom"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:gravity="bottom|center">
 
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_weight="1" />
+        <LinearLayout
+            android:layout_width="117dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:gravity="bottom|center">
 
-        <Button
-            android:id="@+id/action_clear_all"
-            style="@style/OverviewActionButton"
-            android:layout_width="150dp"
+            <Space
+                android:id="@+id/screenshot_space"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/action_screenshot"
+                style="@style/OverviewActionButton"
+                android:layout_width="@dimen/recents_view_icon_size_width"
+                android:layout_height="@dimen/recents_view_icon_size_height"
+                android:layout_marginRight="@dimen/recents_view_icon_margin_space_edges"
+                android:foreground="@drawable/ic_screenshot"
+                android:layout_gravity="end"
+                android:foregroundGravity="center" />
+
+            <Space
+                android:id="@+id/action_split_space"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/action_split"
+                style="@style/OverviewActionButton"
+                android:layout_width="@dimen/recents_view_icon_size_width"
+                android:layout_height="@dimen/recents_view_icon_size_height"
+                android:layout_marginRight="@dimen/recents_view_icon_margin_space_edges"
+                android:foreground="@drawable/ic_split_horizontal"
+                android:layout_gravity="end"
+                android:foregroundGravity="center"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/clear_all_container"
+            android:layout_width="132dp"
             android:layout_height="@dimen/overview_clear_all_container_height"
-            android:text="@string/recents_clear_all_title"
-            android:textColor="?android:attr/colorAccent"
-            android:foregroundGravity="center" />
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginBottom="@dimen/overview_clear_all_container_margin_bottom"
+            android:gravity="bottom|center">
 
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_weight="1" />
+            <Space
+                android:id="@+id/clear_all_space"
+                android:layout_width="@dimen/recents_view_icon_margin_space_edges"
+                android:layout_height="1dp" />
 
-         </LinearLayout>
+            <Button
+                android:id="@+id/action_clear_all"
+                style="@style/OverviewActionButton"
+                android:layout_width="126dp"
+                android:layout_height="@dimen/overview_clear_all_container_height"
+                android:layout_marginRight="@dimen/recents_view_icon_margin_space_edges"
+                android:text="@string/recents_clear_all_title"
+                android:textColor="?android:attr/colorAccent"
+                android:layout_gravity="center_vertical"
+                android:foregroundGravity="center" />
+        </LinearLayout>
 
-    <LinearLayout
-    	android:id="@+id/second_overview_actions_container"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/recents_view_icon_size_width"
-        android:layout_gravity="bottom|center_horizontal"
-        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="117dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:gravity="bottom|center">
 
-        <Space
-            android:id="@+id/screenshot_space"
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_weight="1" />
+            <Space
+                android:id="@+id/lens_space"
+                android:layout_width="0dp"
+                android:layout_height="1dp" />
 
-        <Button
-            android:id="@+id/action_screenshot"
-            style="@style/OverviewActionButton"
-            android:layout_width="@dimen/recents_view_icon_size_width"
-            android:layout_height="@dimen/recents_view_icon_size_height"
-            android:foreground="@drawable/ic_screenshot"
-            android:layout_gravity="center_vertical"
-            android:foregroundGravity="center" />
+            <Button
+                android:id="@+id/action_lens"
+                style="@style/OverviewActionButton"
+                android:layout_width="@dimen/recents_view_icon_size_width"
+                android:layout_height="@dimen/recents_view_icon_size_height"
+                android:layout_marginLeft="@dimen/recents_view_icon_margin_space_edges"
+                android:layout_marginRight="@dimen/recents_view_icon_margin_space_edges"
+                android:foreground="@drawable/ic_lens"
+                android:layout_gravity="start"
+                android:foregroundGravity="center"
+                android:visibility="gone" />
 
-        <Space
-            android:id="@+id/action_split_space"
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_weight="1"
-            android:visibility="gone" />
+            <Space
+                android:id="@+id/kill_app_space"
+                android:layout_width="0dp"
+                android:layout_height="1dp" />
 
-        <Button
-            android:id="@+id/action_split"
-            style="@style/OverviewActionButton"
-            android:layout_width="@dimen/recents_view_icon_size_width"
-            android:layout_height="@dimen/recents_view_icon_size_height"
-            android:foreground="@drawable/ic_split_horizontal"
-            android:layout_gravity="center_vertical"
-            android:foregroundGravity="center"
-            android:visibility="gone" />
+            <Button
+                android:id="@+id/kill_app"
+                style="@style/OverviewActionButton"
+                android:layout_width="@dimen/recents_view_icon_size_width"
+                android:layout_height="@dimen/recents_view_icon_size_height"
+                android:layout_marginLeft="@dimen/recents_view_icon_margin_space_edges"
+                android:foreground="@drawable/ic_kill_app_recents"
+                android:layout_gravity="start"
+                android:foregroundGravity="center" />
 
-        <Space
-            android:id="@+id/lens_space"
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_weight="1"
-            android:visibility="gone" />
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
 
-        <Button
-            android:id="@+id/action_lens"
-            style="@style/OverviewActionButton"
-            android:layout_width="@dimen/recents_view_icon_size_width"
-            android:layout_height="@dimen/recents_view_icon_size_height"
-            android:foreground="@drawable/ic_lens"
-            android:layout_gravity="center_vertical"
-            android:foregroundGravity="center" />
-
-        <Space
-            android:id="@+id/kill_app_space"
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_weight="1" />
-
-        <Button
-            android:id="@+id/kill_app"
-            style="@style/OverviewActionButton"
-            android:layout_width="@dimen/recents_view_icon_size_width"
-            android:layout_height="@dimen/recents_view_icon_size_height"
-            android:foreground="@drawable/ic_kill_app_recents"
-            android:layout_gravity="center_vertical"
-            android:foregroundGravity="center" />
-
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_weight="1" />
-
-        <Space
-            android:id="@+id/oav_three_button_space"
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_weight="1"
-            android:visibility="gone" />
+            <Space
+                android:id="@+id/oav_three_button_space"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"
+                android:visibility="gone" />
+        </LinearLayout>
     </LinearLayout>
 
-</LinearLayout>
 </com.android.quickstep.views.OverviewActionsView>

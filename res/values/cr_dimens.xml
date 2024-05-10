@@ -16,11 +16,12 @@
 -->
 <resources>
     <!-- Recents overview -->
-    <dimen name="recents_view_icon_size_height">42dp</dimen>
-    <dimen name="recents_view_icon_size_width">60dp</dimen>
-    <dimen name="custom_overview_actions_height">112dp</dimen>
-    <dimen name="overview_clear_all_container_height">48dp</dimen>
-    <dimen name="overview_clear_all_container_margin_bottom">9dp</dimen>
+    <dimen name="recents_view_icon_size_height">54dp</dimen>
+    <dimen name="recents_view_icon_size_width">54dp</dimen>
+    <dimen name="recents_view_icon_margin_space_edges">3dp</dimen>
+    <dimen name="custom_overview_actions_height">72dp</dimen>
+    <dimen name="overview_clear_all_container_height">60dp</dimen>
+    <dimen name="overview_clear_all_container_margin_bottom">12dp</dimen>
 
      <!-- Meminfo in overview -->
     <dimen name="meminfo_bottom_margin_gesture">0dp</dimen>
