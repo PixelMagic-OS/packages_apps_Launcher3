@@ -29,7 +29,7 @@
         android:title="@string/themed_icons_category_title"
         android:layout="@layout/top_level_preference_middle_card" />
 
-    <SwitchPreferenceCompat
+    <SwitchPreference
         android:key="pref_allapps_themed_icons"
         android:title="@string/pref_themed_icons_title"
         android:summary="@string/pref_themed_icons_summary"
@@ -37,7 +37,7 @@
         android:layout="@layout/top_level_preference_middle_card"
         launcher:iconSpaceReserved="false" />
 
-    <SwitchPreferenceCompat
+    <SwitchPreference
         android:key="pref_forced_monochrome_icons"
         android:title="@string/pref_force_monochrome_themed_icons_title"
         android:summary="@string/pref_force_monochrome_themed_icons_summary"
