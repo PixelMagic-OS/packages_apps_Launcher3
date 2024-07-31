@@ -69,14 +69,6 @@
             android:layout="@layout/top_level_preference_middle_card" />
 
         <SwitchPreferenceCompat
-            android:key="pref_recents_lock"
-            android:title="@string/recents_lock_title"
-            android:defaultValue="true"
-            android:persistent="true"
-            launcher:iconSpaceReserved="false"
-            android:layout="@layout/top_level_preference_middle_card" />            
-
-        <SwitchPreferenceCompat
             android:key="pref_recents_screenshot"
             android:title="@string/recents_screenshot_title"
             android:defaultValue="true"
