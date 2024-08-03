@@ -397,8 +397,6 @@ public class TaskbarManager {
     public void onUserUnlocked() {
         mUserUnlocked = true;
         DisplayController.INSTANCE.get(mContext).addChangeListener(mRecreationListener);
-        SharedPreferences prefs = LauncherPrefs.getPrefs(mContext);
-        prefs.registerOnSharedPreferenceChangeListener(this);
         recreateTaskbar();
         addTaskbarRootViewToWindow();
     }
