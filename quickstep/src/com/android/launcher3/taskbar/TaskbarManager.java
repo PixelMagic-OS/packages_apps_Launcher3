@@ -82,8 +82,6 @@ import com.android.systemui.shared.system.QuickStepContract.SystemUiStateFlags;
 import com.android.systemui.unfold.UnfoldTransitionProgressProvider;
 import com.android.systemui.unfold.util.ScopedUnfoldTransitionProgressProvider;
 
-import lineageos.providers.LineageSettings;
-
 import java.io.PrintWriter;
 import java.util.StringJoiner;
 
@@ -485,10 +483,9 @@ public class TaskbarManager implements OnSharedPreferenceChangeListener {
                 + " [dp != null (i.e. mUserUnlocked)]=" + (dp != null)
                 + " FLAG_HIDE_NAVBAR_WINDOW=" + ENABLE_TASKBAR_NAVBAR_UNIFICATION
                 + " dp.isTaskbarPresent=" + (dp == null ? "null" : dp.isTaskbarPresent));
-            SystemUiProxy sysui = SystemUiProxy.INSTANCE.get(mContext);
-            sysui.setTaskbarEnabled(isTaskbarEnabled);
-            if (!isTaskbarEnabled || !isLargeScreenTaskbar) {
-                sysui.notifyTaskbarStatus(/* visible */ false, /* stashed */ false);
+            if (!isTaskbarEnabled) {
+                SystemUiProxy.INSTANCE.get(mContext)
+                    .notifyTaskbarStatus(/* visible */ false, /* stashed */ false);
                 if (!isTaskbarEnabled) {
                     return;
                 }

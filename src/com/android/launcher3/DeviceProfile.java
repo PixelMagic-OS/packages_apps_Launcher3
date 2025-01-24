@@ -430,10 +430,7 @@ public class DeviceProfile {
         isTablet = info.isTablet(windowBounds);
         isPhone = !isTablet;
         isTwoPanels = isTablet && isMultiDisplay;
-        boolean isTaskBarEnabled = prefs.getBoolean(KEY_PHONE_TASKBAR, isTablet ||
-                (enableTinyTaskbar() && isGestureMode));
-        isTaskbarPresent = isTaskBarEnabled
-                && WindowManagerProxy.INSTANCE.get(context).isTaskbarDrawnInProcess();
+        isTaskbarPresent = isTablet && WindowManagerProxy.INSTANCE.get(context).isTaskbarDrawnInProcess();
 
         // Some more constants.
         context = getContext(context, info, isVerticalBarLayout() || (isTablet && isLandscape)
