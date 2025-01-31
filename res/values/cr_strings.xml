@@ -430,4 +430,8 @@
     <string name="themed_icons_title">Themed icons</string>
     <string name="themed_icons_summary_on">Themed icons enabled</string>
     <string name="themed_icons_summary_off">Themed icons disabled</string>
+    
+    <!-- Widgets -->
+    <string name="widget_battery_title">Battery widget</string>
+    <string name="widget_photo_title">Photo widget</string>
 </resources>
