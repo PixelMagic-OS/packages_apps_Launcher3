@@ -39,8 +39,6 @@ import android.app.PendingIntent;
 import android.content.ComponentCallbacks;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.hardware.display.DisplayManager;
@@ -61,7 +59,6 @@ import androidx.annotation.VisibleForTesting;
 import com.android.launcher3.DeviceProfile;
 import com.android.launcher3.Launcher;
 import com.android.launcher3.LauncherAppState;
-import com.android.launcher3.LauncherPrefs;
 import com.android.launcher3.anim.AnimatorPlaybackController;
 import com.android.launcher3.contextualeducation.ContextualEduStatsManager;
 import com.android.launcher3.statehandlers.DesktopVisibilityController;
@@ -88,7 +85,7 @@ import java.util.StringJoiner;
 /**
  * Class to manage taskbar lifecycle
  */
-public class TaskbarManager implements OnSharedPreferenceChangeListener {
+public class TaskbarManager {
     private static final String TAG = "TaskbarManager";
     private static final boolean DEBUG = false;
 
@@ -329,19 +326,6 @@ public class TaskbarManager implements OnSharedPreferenceChangeListener {
         recreateTaskbar();
     }
 
-    @Override
-    public void onSharedPreferenceChanged(SharedPreferences prefs, String key) {
-        switch (key) {
-            case DeviceProfile.KEY_PHONE_TASKBAR:
-                boolean enabled = LauncherPrefs.getPrefs(mContext).getBoolean(DeviceProfile.KEY_PHONE_TASKBAR, false);
-                SystemUiProxy.INSTANCE.get(mContext).setTaskbarEnabled(enabled);
-
-                LineageSettings.System.putInt(mContext.getContentResolver(),
-                        LineageSettings.System.ENABLE_TASKBAR, enabled ? 1 : 0);
-                break;
-        }
-    }
-
     private void destroyExistingTaskbar() {
         debugWhyTaskbarNotDestroyed("destroyExistingTaskbar: " + mTaskbarActivityContext);
         if (mTaskbarActivityContext != null) {
@@ -396,8 +380,6 @@ public class TaskbarManager implements OnSharedPreferenceChangeListener {
     public void onUserUnlocked() {
         mUserUnlocked = true;
         DisplayController.INSTANCE.get(mContext).addChangeListener(mRecreationListener);
-        SharedPreferences prefs = LauncherPrefs.getPrefs(mContext);
-        prefs.registerOnSharedPreferenceChangeListener(this);
         recreateTaskbar();
         addTaskbarRootViewToWindow();
     }

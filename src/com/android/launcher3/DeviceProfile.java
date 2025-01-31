@@ -78,7 +78,6 @@ import java.util.function.Consumer;
 @SuppressLint("NewApi")
 public class DeviceProfile {
 
-    public static final String KEY_PHONE_TASKBAR = "pref_allow_phone_taskbar";
     public static final String KEY_ROW_HEIGHT = "pref_row_height";
 
     private static final int DEFAULT_DOT_SIZE = 100;
