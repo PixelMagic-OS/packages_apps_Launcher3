@@ -1224,7 +1224,7 @@ public final class Utilities {
         Context appContext = context.getApplicationContext();
         ContextualSearchManager contextualSearchManager = 
             (ContextualSearchManager) appContext.getSystemService(Context.CONTEXTUAL_SEARCH_SERVICE);
-        if (!com.android.internal.util.android.Utils.isPackageInstalled(
+        if (!com.android.internal.util.pm.Utils.isPackageInstalled(
                     appContext, GSA_PACKAGE)
                 || contextualSearchManager == null) {
             return false;
