@@ -29,7 +29,8 @@
             android:max="100"
             android:min="0"
             settings:units="%"
-            android:defaultValue="40" />
+            android:defaultValue="40"
+            settings:customlayout="@layout/preference_custom_seekbar_top" />
 
         <SwitchPreferenceCompat
             android:key="pref_recents_meminfo"
@@ -37,7 +38,7 @@
             android:defaultValue="false"
             android:persistent="true"
             launcher:iconSpaceReserved="false"
-            android:layout="@layout/settings_layout_solo_no_summary" />
+            android:layout="@layout/settings_layout_bottom_no_summary" />
     </PreferenceCategory>
 
     <PreferenceCategory
