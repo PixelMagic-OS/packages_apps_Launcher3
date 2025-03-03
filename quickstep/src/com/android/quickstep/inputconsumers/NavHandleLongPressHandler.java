@@ -1,6 +1,5 @@
 /*
  * Copyright (C) 2023 The Android Open Source Project
- *               2023-2024 The risingOS Android Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.android.quickstep.inputconsumers;
 
 import android.content.Context;
@@ -21,28 +21,18 @@ import android.content.Context;
 import androidx.annotation.Nullable;
 
 import com.android.launcher3.R;
-import com.android.launcher3.Utilities;
 import com.android.launcher3.util.ResourceBasedOverride;
-import com.android.launcher3.util.VibratorWrapper;
 import com.android.quickstep.NavHandle;
-
-import java.util.List;
 
 /**
  * Class for extending nav handle long press behavior
  */
 public class NavHandleLongPressHandler implements ResourceBasedOverride {
 
-    private final String TAG = "NavHandleLongPressHandler";
-    private boolean DEBUG = false;
-
-    private Context mContext;
-    private VibratorWrapper mVibratorWrapper;
-
     /** Creates NavHandleLongPressHandler as specified by overrides */
-    public NavHandleLongPressHandler(Context context) {
-        mContext = context.getApplicationContext();
-        mVibratorWrapper = VibratorWrapper.INSTANCE.get(mContext);
+    public static NavHandleLongPressHandler newInstance(Context context) {
+        return Overrides.getObject(NavHandleLongPressHandler.class, context,
+                R.string.nav_handle_long_press_handler_class);
     }
 
     /**
@@ -57,12 +47,6 @@ public class NavHandleLongPressHandler implements ResourceBasedOverride {
      * @param navHandle to handle this long press
      */
     public @Nullable Runnable getLongPressRunnable(NavHandle navHandle) {
-        if (Utilities.isLongPressSearchEnabled(mContext) && 
-            Utilities.startContextualSearch(mContext, 
-                android.app.contextualsearch.ContextualSearchManager.ENTRYPOINT_LONG_PRESS_NAV_HANDLE)) {
-            mVibratorWrapper.cancelVibrate();
-            mVibratorWrapper.vibrateForSearchHint();
-        }
         return null;
     }
 

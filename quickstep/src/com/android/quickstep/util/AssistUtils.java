@@ -15,43 +15,24 @@
  */
 package com.android.quickstep.util;
 
-import static com.android.internal.app.AssistUtils.INVOCATION_TYPE_HOME_BUTTON_LONG_PRESS;
-
-import android.app.contextualsearch.ContextualSearchManager;
 import android.content.Context;
 
 import com.android.launcher3.R;
 import com.android.launcher3.util.ResourceBasedOverride;
-import com.android.launcher3.Utilities;
 
 /** Utilities to work with Assistant functionality. */
-public class AssistUtils {
+public class AssistUtils implements ResourceBasedOverride {
 
-    private static final int[] SYS_UI_ASSIST_OVERRIDE_INVOCATION_TYPES = {
-        INVOCATION_TYPE_HOME_BUTTON_LONG_PRESS
-    };
-
-    private static AssistUtils sInstance;
-
-    private Context mContext;
-    private ContextualSearchManager mContextualSearchManager;
-
-    public AssistUtils(Context context) {
-        mContext = context.getApplicationContext();
-        mContextualSearchManager = (ContextualSearchManager) mContext.getSystemService(Context.CONTEXTUAL_SEARCH_SERVICE);
-    }
+    public AssistUtils() {}
 
     /** Creates AssistUtils as specified by overrides */
-    public static synchronized AssistUtils newInstance(Context context) {
-        if (sInstance == null) {
-            sInstance = new AssistUtils(context);
-        }
-        return sInstance;
+    public static AssistUtils newInstance(Context context) {
+        return Overrides.getObject(AssistUtils.class, context, R.string.assist_utils_class);
     }
 
     /** @return Array of AssistUtils.INVOCATION_TYPE_* that we want to handle instead of SysUI. */
     public int[] getSysUiAssistOverrideInvocationTypes() {
-        return SYS_UI_ASSIST_OVERRIDE_INVOCATION_TYPES;
+        return new int[0];
     }
 
     /**
@@ -59,9 +40,6 @@ public class AssistUtils {
      * request should be ignored. {@code false} means the caller should start assist another way.
      */
     public boolean tryStartAssistOverride(int invocationType) {
-        if (invocationType != INVOCATION_TYPE_HOME_BUTTON_LONG_PRESS) {
-            return false;
-        }
-        return Utilities.startContextualSearch(mContext, ContextualSearchManager.ENTRYPOINT_LONG_PRESS_HOME);
+        return false;
     }
 }
