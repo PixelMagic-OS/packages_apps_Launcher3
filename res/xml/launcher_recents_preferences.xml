@@ -29,7 +29,7 @@
             android:max="100"
             android:min="0"
             settings:units="%"
-            android:defaultValue="40"
+            android:defaultValue="0"
             settings:customlayout="@layout/preference_custom_seekbar_top" />
 
         <SwitchPreferenceCompat
